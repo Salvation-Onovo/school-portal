@@ -4,9 +4,43 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react"
-import { Link } from "react-router-dom"
+import { BsEyeSlash , BsEye } from "react-icons/bs";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 function Login() {
+
+  const [username , setUsername] = useState("")
+  const [password , setPassword] = useState("")
+  const [view, setView] = useState(false);
+
+  const login = async(e) => {
+    e.preventDefault()
+    try {
+         
+      const response = await fetch("https://result-checker-g7zf.onrender.com/api/login", {
+      method: "POST",
+      mode: "cors",
+      headers : {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+         password , 
+      })
+    })
+      const data = await response.json();
+      console.log(data);
+      console.log(response.status);
+  // toast.success("Success" , {toastId  : "custom-id"})
+  // window.location.href="/login"
+    } catch(err) {
+
+toast.error("Login Failed")
+    }
+  }
   return (
     <div className="flex justify-center items-center mt-10">
       <Card color="transparent" shadow={false}>
@@ -15,27 +49,30 @@ function Login() {
           Enter your details to Log in
         </Typography>
 
-        <form className="mt-6 mb-2 w-80 max-w-screen-lg sm:w-96">
+        <form className="mt-6 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={login}>
           <div className="mb-4 flex flex-col gap-6">
-            <Input size="lg" label="UserName" />
-            <Input type="password" size="lg" label="Password" />
+            <Input size="lg" label="User Name" required  onChange={(e) => setUsername(e.target.value)} />
+            <Input type={view ? "text" : "password"}  required size="lg" label="Password"  onChange={(e) => setPassword(e.target.value)}  icon={
+                  view ? (
+                    <BsEye
+                      className="cursor-pointer"
+                      onClick={() => setView(!view)}
+                    />
+                  ) : (
+                    <BsEyeSlash
+                      className="cursor-pointer"
+                      onClick={() => setView(!view)}
+                    />
+                  )
+                }/>
           </div>
-        </form>
-
-        <Link to={"/Home"}>
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" type="submit" fullWidth>
             Login
           </Button>
-        </Link>
-        <Typography color="gray" className="mt-4 text-center font-normal">
-          Forgotten Password?{" "}
-          <Link to={"/ResetPassword"}>
-            <a href="#" className="font-medium text-gray-900 hover:text-red-600 ">
-              reset
-            </a>
-          </Link>
-        </Typography>
+        </form>
+
       </Card>
+      <ToastContainer/>
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import {
   Card,
   Input,
-  Checkbox,
   Button,
   Typography,
   Alert,
 } from "@material-tailwind/react"
 import { useState } from "react"
+import React from "react";
 import { Link } from "react-router-dom"
 import { BsEyeSlash , BsEye } from "react-icons/bs";
 
@@ -31,15 +31,41 @@ function Icon() {
   );
 }
 
+function AlertCustomCloseIcon() {
+  const [open, setOpen] = React.useState(true);
+ 
+  return (
+    <>
+      <Alert
+        variant="gradient"
+        open={open}
+        icon={<Icon />}
+        color="red"
+        action={
+          <Button
+            variant="text"
+            color="white"
+            size="sm"
+            className="!absolute top-3 right-3"
+            onClick={() => setOpen(false)}
+          >
+            X
+          </Button>
+        }
+      >
+        Password Does not Match
+      </Alert>
+    </>
+  );
+}
+
 function SignUp() {
   
   const [firstname , setFirstname] = useState("")
   const [lastname , setLatname] = useState("")
   const [username , setUsername] = useState("")
-  
   const [password , setPassword] = useState("")
   const [confirmPwd , setConfirmPwd] = useState("")
-  
   const [view, setView] = useState(false);
   const [fail, setFail] = useState(false);
 
@@ -80,15 +106,9 @@ function SignUp() {
       }
     }
   
- 
-   
-    // window.location.href = "/login"
+
    }
 
- 
-   
-
-   const [viewconf, setViewconf] = useState(false);
   
   return (
     <div className="flex justify-center items-center mt-10">
@@ -117,46 +137,23 @@ function SignUp() {
                     />
                   )
                 } onChange={(e) => setPassword(e.target.value)}/>
-                {fail ?  <Alert
-    variant="gradient"
-    color="red"
-    open={open}
-    icon={<Icon />}
-   
-  >Password does not match</Alert> : ''}
-            <Input type={viewconf ? "text" : "password"} required size="lg" label="ConfirmPassword" onChange={(e) => setConfirmPwd(e.target.value)}  icon={
-                  viewconf ? (
+                {fail ?  <AlertCustomCloseIcon/> : ''}
+            <Input type={view ? "text" : "password"} required size="lg" label="ConfirmPassword" onChange={(e) => setConfirmPwd(e.target.value)}  icon={
+                  view ? (
                     <BsEye
                       className="cursor-pointer"
-                      onClick={() => setViewconf(!view)}
+                      onClick={() => setView(!view)}
                     />
                   ) : (
                     <BsEyeSlash
                       className="cursor-pointer"
-                      onClick={() => setViewconf(!view)}
+                      onClick={() => setView(!view)}
                     />
                   )
                 }/>
            
             <Input type="file" accept=".png , .jpg , .jpeg " label="ProfilePicture" size="lg"/>
           </div>
-          <Checkbox
-          label={
-            <Typography
-              variant="small"
-              color="gray"
-              className="flex items-center font-normal"
-            >
-              I agree the
-              <a
-                href="#"
-                className="font-medium transition-colors hover:text-gray-900"
-              >
-                &nbsp;Terms and Conditions
-              </a>
-            </Typography>
-          } containerProps={{ className: "-ml-2.5" }}
-        />
           <Button className="mt-6"  type="submit" fullWidth>
             Register
           </Button>
