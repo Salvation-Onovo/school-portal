@@ -48,7 +48,7 @@ function SignUp() {
             <Input size="lg" label="First Name" required onChange={(e) => setFirstname(e.target.value)}/>
             <Input size="lg" label="Last Name" required onChange={(e) => setLatname(e.target.value)}/>
             <Input size="lg" label="User Name" required onChange={(e) => setUsername(e.target.value)}/>
-            <Input size="lg" label="Email" required onChange={(e) => setEmail(e.target.value)}/>
+            <Input size="lg" label="Email" inputMode="email" required onChange={(e) => setEmail(e.target.value)}/>
             <Input type={view ? "text" : "password"} required size="lg" label="Password" icon={
                   view ? (
                     <BsEye
@@ -75,7 +75,7 @@ function SignUp() {
                     />
                   )
                 }/>
-            <Input size="lg" label="ContactNumber" required onChange={(e) => setNumber(e.target.value)}/>
+            <Input size="lg" type="tel" inputMode="tel" label="ContactNumber" required onChange={(e) => setNumber(e.target.value)}/>
             <Input type="file" label="ProfilePicture" size="lg"/>
           </div>
         </form>
