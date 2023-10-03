@@ -1,13 +1,14 @@
 import { SideBar } from "."
 
 
+
 function Home() {
   return (
-    <div className="flex">
-      <SideBar/>
+    <div className="flex flex-col">
 
-      <div>
-        <p>WELCOME</p>
+      <div className="flex justify-between items-center mx-3">
+      <SideBar/>
+     Dashboard
       </div>
     </div>
   )
