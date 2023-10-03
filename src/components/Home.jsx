@@ -8,7 +8,7 @@ function Home() {
 
       <div className="flex justify-between items-center mx-3">
       <SideBar/>
-     Dashboard
+      !3th September , 2023
       </div>
     </div>
   )

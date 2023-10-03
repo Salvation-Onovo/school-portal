@@ -6,15 +6,15 @@ import {
   ListItemSuffix,
   Drawer,
   IconButton,
-  Chip,
+  
 } from "@material-tailwind/react";
 import {
-  PresentationChartBarIcon,
+ 
   ShoppingBagIcon,
   UserCircleIcon,
   Cog6ToothIcon,
   InboxIcon,
-  PowerIcon,
+
 } from "@heroicons/react/24/solid";
 import React from "react";
 import { BiMenuAltLeft } from "react-icons/bi";
@@ -22,14 +22,15 @@ import { BiMenuAltLeft } from "react-icons/bi";
 
 function SideBar ({closeme}){
   return (
-    <div className="h-screen w-full max-w-[20rem] p-4 shadow-xl bg-black shadow-blue-gray-900/5">
+    <div className="h-screen w-full max-w-[20rem] p-4 shadow-xl bg-white shadow-blue-gray-900/5">
       <div className="flex justify-between items-center mb-2 p-4">
         <Typography variant="h5" color="blue-gray">
           Sidebar
         </Typography>
       {closeme}
       </div>
-      <List>
+   <div className="flex flex-col justify-between h-full">
+   <List>
         <ListItem>
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />
@@ -39,25 +40,9 @@ function SideBar ({closeme}){
 
         <ListItem>
           <ListItemPrefix>
-            <PresentationChartBarIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Dashboard
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
             <ShoppingBagIcon className="h-5 w-5" />
           </ListItemPrefix>
           Mark Attendance
-        </ListItem>
-
-        <ListItem>
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Check Results
-          <ListItemSuffix>
-            <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-          </ListItemSuffix>
         </ListItem>
 
         <ListItem>
@@ -68,14 +53,19 @@ function SideBar ({closeme}){
         </ListItem>
         <ListItem>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <InboxIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Log Out
+          Check Results
+          <ListItemSuffix>
+          </ListItemSuffix>
         </ListItem>
       </List>
+   </div>
     </div>
   )
 }
+
+
 
 function Home() {
   const [open, setOpen] = React.useState(false);
@@ -85,7 +75,7 @@ function Home() {
   return (
     <>
     
-    <header>
+    <header className="my-3">
    <nav className="flex justify-between items-center">
     <div><BiMenuAltLeft onClick={openDrawer} size={28}/></div>
     <div></div>

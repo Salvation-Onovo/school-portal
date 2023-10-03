@@ -32,10 +32,12 @@ function Login() {
       })
     })
       const data = await response.json();
-      console.log(data);
-      console.log(response.status);
-  // toast.success("Success" , {toastId  : "custom-id"})
-  // window.location.href="/login"
+      if(response.status == 200){
+ toast.success("Success" , {toastId  : "custom-id"})
+  window.location.href="/home"
+      }else{
+        toast.error(data.message)
+      }
     } catch(err) {
 
 toast.error("Login Failed")
