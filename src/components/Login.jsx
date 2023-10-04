@@ -42,7 +42,7 @@ function Login() {
       }
     } catch(err) {
 
-toast.error("Login Failed")
+toast.error("Login Failed",{toastId : 'custom-id'})
     }
   }
   return (

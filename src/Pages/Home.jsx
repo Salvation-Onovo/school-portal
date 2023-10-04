@@ -1,7 +1,26 @@
+import { ToastContainer, toast } from "react-toastify";
 import { Footer, SideBar } from "../components"
+import { useEffect } from "react";
 
+ 
+const userDetails = JSON.parse(localStorage.getItem('userDetails'))
 
+const CheckUser = async(userId) =>{
+  try{
+    const response = await fetch(`https://result-checker-g7zf.onrender.com/api/${userId}`)
+    if(response.status == 200){
+      return true
+    }
+  }catch{
+    return false
+  }
+}
 function Home() {
+  
+  
+  useEffect(() => {
+    CheckUser(userDetails)
+  }, []);
   return (
     <div>
       <div className="flex">
@@ -14,6 +33,7 @@ function Home() {
         </div>
 
       </div>
+      <ToastContainer/>
     </div>
   )
 }

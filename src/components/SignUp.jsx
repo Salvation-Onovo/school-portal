@@ -94,7 +94,7 @@ function SignUp() {
               username
             })
           })
-          const data = await response.text();
+          const data = await response.json();
           console.log(data);
           toast.success("Success", { toastId: "custom-id" })
           window.location.href = "/login"
