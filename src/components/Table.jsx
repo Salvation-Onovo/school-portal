@@ -9,6 +9,30 @@ const TABLE_ROWS = [
     Attendance: "present",
     date: "23/04/18",
   },
+  {
+    StudentName: "John Michael",
+    RollNumber: 192872623,
+    Attendance: "present",
+    date: "23/04/18",
+  },
+  {
+    StudentName: "John Michael",
+    RollNumber: 192872623,
+    Attendance: "present",
+    date: "23/04/18",
+  },
+  {
+    StudentName: "John Michael",
+    RollNumber: 192872623,
+    Attendance: "present",
+    date: "23/04/18",
+  },
+  {
+    StudentName: "John Michael",
+    RollNumber: 192872623,
+    Attendance: "present",
+    date: "23/04/18",
+  },
 ];
  
  function Table() {

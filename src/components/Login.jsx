@@ -33,6 +33,8 @@ function Login() {
     })
       const data = await response.json();
       if(response.status == 200){
+        
+        localStorage.setItem('userDetails', JSON.stringify(data))
  toast.success("Success" , {toastId  : "custom-id"})
   window.location.href="/home"
       }else{

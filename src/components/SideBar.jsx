@@ -1,81 +1,57 @@
 import {
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-  ListItemSuffix,
-  Chip,
-} from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
   ShoppingBagIcon,
   UserCircleIcon,
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
-function SideBar ({closeme}){
+function SideBar() {
   return (
-    <div className="h-screen w-full max-w-[20rem] p-4 shadow-xl bg-black shadow-blue-gray-900/5">
-      <div className="mb-2 p-4">
-        <Typography variant="h5" color="blue-gray">
-          Sidebar
-        </Typography>
-      {closeme}
+    <div className="hidden lg:block  h-screen w-full max-w-[20rem] p-4 shadow-xl bg-blue-gray-900 shadow-blue-gray-900/5">
+      <div className="mb-2 float-right">
+        <XMarkIcon className="text-white w-8 h-8" />
       </div>
-      <List>
-        <ListItem>
-          <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Profile
-        </ListItem>
-        <List>
 
-        <ListItem>
-          <ListItemPrefix>
-            <PresentationChartBarIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Dashboard
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
+      <div className="text-white flex flex-col items-center justify-center mt-10 mb-2">
+        <UserCircleIcon className="h-20 w-20" />
+        <p>Salvation</p>
+      </div>
+      <hr />
+
+      <div className="mt-20">
+
+        <Link to={"/MarkAttendance"}>
+          <div className="text-white flex hover:text-gray-800 hover:bg-gray-400 p-2 rounded-lg">
             <ShoppingBagIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Mark Attendance
-        </ListItem>
+            <p className="ml-3.5">Mark Attendance</p>
+          </div>
+        </Link>
 
-        <ListItem>
-          <ListItemPrefix>
+        <Link to={"/CheckResult"}>
+          <div className="text-white flex mt-4 hover:text-gray-800 hover:bg-gray-400 p-2 rounded-lg">
             <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Check Results
-          <ListItemSuffix>
-            <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-          </ListItemSuffix>
-        </ListItem>
+            <p className="ml-3.5">Check Results</p>
+          </div>
+        </Link>
 
-          <Link to={"/VerifyPayment"}>
-            <ListItem className="text-white">
-              <ListItemPrefix>
-                <Cog6ToothIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Verify Fees Payment
-            </ListItem>
-          </Link>
-        </List>
-        <ListItem className="mt-52 text-white">
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Check Results
-          <ListItemSuffix>
-          </ListItemSuffix>
-        </ListItem>
-      </List>
+        <Link to={"/VerifyPayment"}>
+          <div className="text-white flex mt-4 hover:text-gray-800 hover:bg-gray-400 p-2 rounded-lg">
+            <Cog6ToothIcon className="h-5 w-5" />
+            <p className="ml-3.5">Verify Fees Payment</p>
+          </div>
+        </Link>
+
+      </div>
+
+      <div className="text-white flex hover:text-gray-800 hover:bg-gray-400 p-2 rounded-lg mt-36">
+        <PowerIcon className="h-5 w-5" />
+        <p className="ml-3.5"> Log Out</p>
+      </div>
     </div>
   );
 }
 
-export default Home
+export default SideBar
