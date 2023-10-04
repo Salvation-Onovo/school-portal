@@ -17,7 +17,7 @@ function SideBar() {
 
       <div className="text-white flex flex-col items-center justify-center mt-10 mb-2">
         <UserCircleIcon className="h-20 w-20" />
-        <p>Salvation</p>
+        <p></p>
       </div>
       <hr />
 
