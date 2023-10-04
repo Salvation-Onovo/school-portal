@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Home, Login, ResetPassword, SignUp } from './components'
+import { CheckResult, Home, Login, MarkAttendance, ResetPassword, SignUp, VerifyPayment } from './components'
 
 function App() {
 
@@ -8,8 +8,11 @@ function App() {
       <Routes>
         <Route exact path="/" element={<SignUp/>} />
         <Route path="Login" element={<Login/>} />
-        <Route path="ResetPassword" element={<ResetPassword/>} />
-        <Route path="Home" element={<Home/>} />
+        <Route path="ResetPassword" element={<ResetPassword/>}/>
+        <Route path="Home" element={<Home/>}/>
+        <Route path="MarkAttendance" element={<MarkAttendance/>}/>
+        <Route path="CheckResult" element={<CheckResult/>}/>
+        <Route path="VerifyPayment" element={<VerifyPayment/>}/>
       </Routes>
     </BrowserRouter>
   )
