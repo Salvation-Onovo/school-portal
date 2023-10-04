@@ -4,7 +4,7 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
-  XMarkIcon,
+
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
@@ -13,8 +13,7 @@ function SideBar() {
   return (
     <div className="hidden lg:block  h-screen w-full max-w-[20rem] p-4 shadow-xl bg-blue-gray-900 shadow-blue-gray-900/5">
       <div className="mb-2 float-right flex flex-col ">
-        <XMarkIcon className="text-white w-8 h-8" />
-       {/* make sure to render the user details here i cant test it cause login and signup isn't working for me  */}
+        
       </div>
 
       <div className="text-white flex flex-col items-center justify-center mt-10 mb-2">

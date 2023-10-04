@@ -1,6 +1,7 @@
-import { ToastContainer, toast } from "react-toastify";
-import { Footer, SideBar } from "../components"
+import { ToastContainer } from "react-toastify";
+import {  SideBar } from "../components"
 import { useEffect } from "react";
+import DrawerNav from "../components/Drawer";
 
  
 const userDetails = JSON.parse(localStorage.getItem('userDetails'))
@@ -26,10 +27,13 @@ function Home() {
       <div className="flex">
         <SideBar />
         <div className="w-full">
-          <div className="mt-10 w-11/12 h-max mx-4 border-blue-gray-900 shadow-lg">
-            <p className="mx-10 text-black p-2 font-semibold">WELCOME</p>
+          <div className="h-screen mx-4 p-2 flex justify-between">
+            <span className='flex md:hidden'>
+            <DrawerNav />
+            </span>
+            Hi Mom !
           </div>
-          <Footer />
+         
         </div>
 
       </div>
