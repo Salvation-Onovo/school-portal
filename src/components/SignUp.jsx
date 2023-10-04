@@ -31,6 +31,7 @@ function Icon() {
   );
 }
 
+// eslint-disable-next-line react/prop-types
 function AlertCustomCloseIcon({message}) {
   const [open, setOpen] = React.useState(true);
 
@@ -93,7 +94,7 @@ function SignUp() {
               username
             })
           })
-          const data = await response.json();
+          const data = await response.text();
           console.log(data);
           toast.success("Success", { toastId: "custom-id" })
           window.location.href = "/login"
