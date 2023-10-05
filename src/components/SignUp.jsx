@@ -31,7 +31,8 @@ function Icon() {
   );
 }
 
-function AlertCustomCloseIcon() {
+// eslint-disable-next-line react/prop-types
+function AlertCustomCloseIcon({message}) {
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -53,7 +54,7 @@ function AlertCustomCloseIcon() {
           </Button>
         }
       >
-        Password Does not Match
+        {message}
       </Alert>
     </>
   );
@@ -67,18 +68,18 @@ function SignUp() {
   const [password, setPassword] = useState("")
   const [confirmPwd, setConfirmPwd] = useState("")
   const [view, setView] = useState(false);
-  const [fail, setFail] = useState(false);
+  const [fail, setFail] = useState({
+    state :false, error : '',
+  });
 
   const handlesubmit = async (e) => {
 
     e.preventDefault();
     if (6 > password.length) {
-      console.log("Error");
+      setFail({...fail, state : true , error : 'Password is less than 6'})      
     } else {
       if (password === confirmPwd) {
-
         try {
-
           const response = await fetch("https://result-checker-g7zf.onrender.com/api/register", {
             method: "POST",
             mode: "cors",
@@ -100,9 +101,10 @@ function SignUp() {
         } catch (err) {
 
           toast.error("Sign Up Failed")
+          console.log(err);
         }
       } else {
-        setFail(true)
+        setFail({...fail, state : true , error : 'Passwords does not match'})  
       }
     }
 
@@ -123,7 +125,7 @@ function SignUp() {
             <Input size="lg" label="First Name" required onChange={(e) => setFirstname(e.target.value)} />
             <Input size="lg" label="Last Name" required onChange={(e) => setLatname(e.target.value)} />
             <Input size="lg" label="User Name" required onChange={(e) => setUsername(e.target.value)} />
-            {/* <Input size="lg" label="Email" inputMode="email" required onChange={(e) => setEmail(e.target.value)}/> */}
+            {fail.state ? <AlertCustomCloseIcon message={fail.error}/> : ''}
             <Input type={view ? "text" : "password"} required size="lg" label="Password" icon={
               view ? (
                 <BsEye
@@ -137,7 +139,7 @@ function SignUp() {
                 />
               )
             } onChange={(e) => setPassword(e.target.value)} />
-            {fail ? <AlertCustomCloseIcon /> : ''}
+            
             <Input type={view ? "text" : "password"} required size="lg" label="ConfirmPassword" onChange={(e) => setConfirmPwd(e.target.value)} icon={
               view ? (
                 <BsEye
@@ -152,7 +154,6 @@ function SignUp() {
               )
             } />
 
-            <Input type="file" accept=".png , .jpg , .jpeg " label="ProfilePicture" size="lg" />
           </div>
           <Button className="mt-6" type="submit" fullWidth>
             Register

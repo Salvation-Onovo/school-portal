@@ -1,10 +1,10 @@
-import { Spinner } from "@material-tailwind/react";
+// import { Spinner } from "@material-tailwind/react";
+import logo from '../assets/Creative team-bro.svg'
 
 function ComingSoon() {
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-center font-bold text-4xl mb-5">Coming Soon</h1>
-      <Spinner className="h-16 w-16 text-gray-900/50" />
+    <div className="flex justify-center items-center">
+      <img src={logo} width={600} />
     </div>
   )
 }
