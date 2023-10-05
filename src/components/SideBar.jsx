@@ -4,24 +4,21 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
-<<<<<<< HEAD
-=======
 
->>>>>>> 6d52c44983c31ddcaef47b0e58ccd6b5e631b0d6
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 
 function SideBar() {
   return (
-    <div className="hidden lg:block  h-screen w-full max-w-[20rem] p-4 shadow-xl bg-blue-gray-900 shadow-blue-gray-900/5">
+    <div className="hidden lg:block  h-screen w-full max-w-[20rem] p-4 shadow-xl bg-blue-gray-900 shadow-blue-gray-900/5 fixed">
       <div className="mb-2 float-right flex flex-col ">
         
       </div>
 
       <div className="text-white flex flex-col items-center justify-center mt-10 mb-2">
         <UserCircleIcon className="h-20 w-20" />
-        <p></p>
+        <p>Profile</p>
       </div>
       <hr />
 

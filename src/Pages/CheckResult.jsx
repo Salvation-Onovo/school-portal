@@ -1,4 +1,4 @@
-import { ComingSoon, Footer, SideBar } from '../components'
+import { ComingSoon, Footer, SideBar } from "../components";
 
 function CheckResult() {
   return (
@@ -6,15 +6,17 @@ function CheckResult() {
       <div className="flex">
         <SideBar />
         <div className="w-full">
-        <h1 className="flex justify-center items-center text-[2rem] font-serif ">Coming Soon</h1>
-          <div className="mt-64 w-11/12 h-max mx-4">
-            <ComingSoon/>
+          <h1 className="flex justify-center items-center text-[2rem] font-serif ">
+            Coming Soon
+          </h1>
+          <div className="flex justify-center items-center">
+            <ComingSoon />
           </div>
-          <Footer />
+          <Footer/>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CheckResult
+export default CheckResult;

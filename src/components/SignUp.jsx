@@ -80,7 +80,7 @@ function SignUp() {
     } else {
       if (password === confirmPwd) {
         try {
-          const response = await fetch("https://result-checker-g7zf.onrender.com/api/register", {
+          const response = await fetch("https://result-checker-g7zf.onrender.com/api/users/register", {
             method: "POST",
             mode: "cors",
             headers: {

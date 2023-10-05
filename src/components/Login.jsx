@@ -20,7 +20,7 @@ function Login() {
     e.preventDefault()
     try {
          
-      const response = await fetch("https://result-checker-g7zf.onrender.com/api/login", {
+      const response = await fetch("https://result-checker-g7zf.onrender.com/api/users/login", {
       method: "POST",
       mode: "cors",
       headers : {

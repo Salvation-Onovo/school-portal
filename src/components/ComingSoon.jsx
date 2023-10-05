@@ -3,8 +3,8 @@ import logo from '../assets/Creative team-bro.svg'
 
 function ComingSoon() {
   return (
-    <div className="flex justify-center items-center">
-      <img src={logo} width={600} />
+    <div className="">
+      <img src={logo} width={500}/>
     </div>
   )
 }
