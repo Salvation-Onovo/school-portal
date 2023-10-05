@@ -44,7 +44,6 @@ function MarkAttendance() {
         "Authorization": "Bearer " + userDetails.token
       }
     })
-
     console.log("RESPONSE", response);
   }
 
