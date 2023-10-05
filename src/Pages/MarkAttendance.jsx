@@ -23,8 +23,17 @@ function MarkAttendance() {
     scanner.render(async (data) => {
       if (data == userDetails.userId) {
         try{
-          // const response = await fetch('')
-          toast.info('Updated');
+         const response = await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
+mode: "cors",
+body: {
+qrCodeData: data
+}
+})
+          If(response.status == 200){
+toast.success(“Attendance updated ”)
+}else{
+toast.error(“Error while updating”)
+}
         }catch{
           toast.error('User does not exist')
         }
