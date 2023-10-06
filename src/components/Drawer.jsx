@@ -7,28 +7,28 @@ import {
   ListItemPrefix,
 } from "@material-tailwind/react";
 import {
-    ShoppingBagIcon,
-    Cog6ToothIcon,
-    InboxIcon,
-  } from "@heroicons/react/24/solid";
-  import { Link } from "react-router-dom";
+  ShoppingBagIcon,
+  Cog6ToothIcon,
+  InboxIcon,
+} from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 
 import { HiMenuAlt1 } from 'react-icons/hi'
- 
+
 function DrawerNav() {
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
- 
+
   return (
     <React.Fragment>
-      <HiMenuAlt1 onClick={openDrawer} size={28}/>
+      <HiMenuAlt1 onClick={openDrawer} size={22} />
       <Drawer open={open} onClose={closeDrawer}>
         <div className="mb-2 flex items-center justify-between p-4">
-        <div className="mb-2 float-right flex flex-col ">
-       
-      </div>
+          <div className="mb-2 float-right flex flex-col ">
+
+          </div>
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ function DrawerNav() {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-               className="h-5 w-5"
+              className="h-5 w-5"
             >
               <path
                 strokeLinecap="round"
@@ -48,14 +48,15 @@ function DrawerNav() {
         </div>
         <List>
           <ListItem>
-          <Link to={"/MarkAttendance"}>
-            <div className="flex items-center justify-between gap-2">
-            <ShoppingBagIcon className="h-5 w-5" />
-            <p>Mark Attendance</p>
-            </div>
-        </Link>
+            <Link to={"/MarkAttendance"}>
+              <div className="flex items-center justify-between gap-2">
+                <ShoppingBagIcon className="h-5 w-5" />
+                <p>Mark Attendance</p>
+              </div>
+            </Link>
           </ListItem>
           <ListItem>
+
           <Link to={"/CheckResult"}>
           <div className="flex items-center justify-between gap-2">
           <InboxIcon className="h-5 w-5" />
@@ -70,6 +71,22 @@ function DrawerNav() {
             <p>Verify Payment</p>
           </div>
         </Link>
+
+            <Link to={"/CheckResult"}>
+              <div className="flex items-center justify-between gap-2">
+                <InboxIcon className="h-5 w-5" />
+                <p>Mark Attendance</p>
+              </div>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/VerifyPayment"}>
+              <div className="flex items-center justify-between gap-2">
+                <Cog6ToothIcon className="h-5 w-5" />
+                <p>Mark Attendance</p>
+              </div>
+            </Link>
+
           </ListItem>
           <ListItem>
             <ListItemPrefix>
