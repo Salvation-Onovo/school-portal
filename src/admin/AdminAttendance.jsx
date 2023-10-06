@@ -2,6 +2,15 @@ import { Table } from "../components"
 import AdminSideBar from "./AdminSideBar"
 
 
+const getUsers = async() => {
+  try {
+    const users = await fetch('https://result-checker-g7zf.onrender.com/api/users/all/student')
+    console.log(users)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function AdminAttendance() {
   return (
     <div className="flex">
