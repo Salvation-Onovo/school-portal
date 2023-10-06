@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { CheckResult, Home, Login, MarkAttendance, ResetPassword, SignUp, VerifyPayment } from './components'
+import { Admin, AdminAttendance, AdminMarkAttendance, CheckResult, Drawer, Home, Login, MarkAttendance, ResetPassword, SignUp, VerifyPayment } from './components'
 
 function App() {
 
@@ -13,6 +13,10 @@ function App() {
         <Route path="MarkAttendance" element={<MarkAttendance/>}/>
         <Route path="CheckResult" element={<CheckResult/>}/>
         <Route path="VerifyPayment" element={<VerifyPayment/>}/>
+        <Route path="Drawer" element={<Drawer/>}/>
+        <Route path="Admin" element={<Admin/>}/>
+        <Route path="AdminMarkAttendance" element={<AdminMarkAttendance/>}/>
+        <Route path="AdminAttendance" element={<AdminAttendance/>}/>
       </Routes>
     </BrowserRouter>
   )
