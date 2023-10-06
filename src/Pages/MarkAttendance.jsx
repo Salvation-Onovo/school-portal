@@ -4,9 +4,11 @@ import { Button } from "@material-tailwind/react"
 import { toast } from "react-toastify";
 
 function MarkAttendance() {
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'))
 
     const qrId = 'qrId'
 
+  // eslint-disable-next-line no-unused-vars
   const scan = () => {
     const config = {
       fps: 10,
@@ -15,8 +17,8 @@ function MarkAttendance() {
       supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 
     }
-    const scanner = new Html5QrcodeScanner(qrId, config)
-    scanner.render(async (data) => {
+    const scanner = new Html5QrcodeScanner(qrId, config);
+    scanner.render = async (data) => {
       if (data == userDetails.userId) {
         try{
       await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
@@ -36,7 +38,7 @@ function MarkAttendance() {
         }catch{
           toast.error('User does not exist')
 
-    };
+    }
 
     const scanner = new Html5QrcodeScanner(qrId, config);
 
@@ -66,7 +68,7 @@ function MarkAttendance() {
         scanner.clear();
       }
     });
-  };
+  }
 
   return (
     <div>
@@ -81,8 +83,8 @@ function MarkAttendance() {
       </div>
     </div>
   )
+}}
 }
-}
-
 
 export default MarkAttendance
+
