@@ -1,4 +1,4 @@
-import {  SideBar } from "../components"
+import { SideBar } from "../components"
 import { Html5QrcodeScanType, Html5QrcodeScanner } from 'html5-qrcode'
 import { Button } from "@material-tailwind/react"
 import { ToastContainer, toast } from "react-toastify"
@@ -18,7 +18,19 @@ function MarkAttendance() {
     scanner.render(async (data) => {
       if (data == userDetails.userId) {
         try{
-          // const response = await fetch('')
+      await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+             
+              qrCodeData: data
+            
+            })
+          })
+
           toast.info('Updated');
         }catch{
           toast.error('User does not exist')
