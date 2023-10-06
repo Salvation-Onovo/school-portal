@@ -1,18 +1,86 @@
-import { Card, Typography } from "@material-tailwind/react";
+/* eslint-disable react/prop-types */
+import { Button, Card, Typography } from "@material-tailwind/react";
+import { ToastContainer, toast } from "react-toastify";
  
-const TABLE_HEAD = ["UserName", "Date", "Attendance", "Time In", "Time Out" ];
- 
-const TABLE_ROWS = [
-  {
-    UserName: "John Michael",
-    Attendance: "present",
-    date: "23/04/18",
-    TimeIn: "8:00pm",
-    TimeOut: "2:00pm",
-  },
-];
- 
+const TABLE_HEAD = ["FirstName", "LastName", "UserName", "Time In", "Time Out" , "GenerateQRcode" ];
+
+const test = [
+  {firstname : "Kelvin",
+   lastname : "Chijioke" ,
+    username : "klvncj" ,
+     TimeOut : "20-12-2002" ,
+      TimeIn : "25-12-2023" , 
+      token : "bsdsbdkvksbhkdvbskuaq98",
+    },
+    {firstname : "Kelvin",
+    lastname : "Chijioke" ,
+     username : "klvncj" ,
+      TimeOut : "20-12-2002" ,
+       TimeIn : "25-12-2023" , 
+       token : "bsdsbdkvksbhkdvbskuaq99",
+     },
+     {firstname : "Kelvin",
+     lastname : "Chijioke" ,
+      username : "klvncj" ,
+       TimeOut : "20-12-2002" ,
+        TimeIn : "25-12-2023" , 
+        token : "bsdsbdkvksbhkdvbskuaq97",
+      },
+      {firstname : "Kelvin",
+      lastname : "Chijioke" ,
+       username : "klvncj" ,
+        TimeOut : "20-12-2002" ,
+         TimeIn : "25-12-2023" , 
+         token : "bsdsbdkvksbhkdvbskuaq96",
+       },
+       {firstname : "Kelvin",
+       lastname : "Chijioke" ,
+        username : "klvncj" ,
+         TimeOut : "20-12-2002" ,
+          TimeIn : "25-12-2023" , 
+          token : "bsdsbdkvksbhkdvbskuaq95",
+        },
+        {firstname : "Kelvin",
+        lastname : "Chijioke" ,
+         username : "klvncj" ,
+          TimeOut : "20-12-2002" ,
+           TimeIn : "25-12-2023" , 
+           token : "bsdsbdkvksbhkdvbskuaq94",
+         },
+         {firstname : "Kelvin",
+         lastname : "Chijioke" ,
+          username : "klvncj" ,
+           TimeOut : "20-12-2002" ,
+            TimeIn : "25-12-2023" , 
+            token : "bsdsbdkvksbhkdvbskuaq93",
+          },
+
+]
+
+
  function Table() {
+
+  const createQrcodeForUser = (token,username) => {
+    toast.info(`Token has been generated for ${username}`, {toastId : token})
+  // try {
+  //     const response = await fetch('url',{
+  //       method: "POST",
+  //       mode: "cors",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify({
+  //        userToken : token
+  //       })
+  //     })
+  //     if(response.status == 200){
+  //       toast.info('qr Code ha been generated')
+  //     }
+  // } catch (error) {
+  //   console.log(error);
+  // }
+  }
+   
 
   return (
     <Card className="h-full w-full overflow-scroll">
@@ -34,21 +102,21 @@ const TABLE_ROWS = [
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(({ UserName, date, Attendance, TimeIn,TimeOut  }, index) => (
+          {test.map(({ firstname , lastname , username , TimeIn,TimeOut, token }, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
               <td className="p-4">
                 <Typography variant="small" color="blue-gray" className="font-normal">
-                  {UserName}
+                  {firstname}
                 </Typography>
               </td>
               <td className="p-4">
                 <Typography variant="small" color="blue-gray" className="font-normal">
-                  {date}
+                  {lastname}
                 </Typography>
               </td>
               <td className="p-4">
                 <Typography variant="small" color="blue-gray" className="font-normal">
-                  {Attendance}
+                  {username}
                 </Typography>
               </td>
               <td className="p-4">
@@ -61,10 +129,16 @@ const TABLE_ROWS = [
                   {TimeOut}
                 </Typography>
               </td>
+              <td className="p-4">
+                <Button onClick={() => {createQrcodeForUser(token,username)}} variant="small" color="blue-gray" className="font-normal">
+                  Generate QR code
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <ToastContainer/>
     </Card>
   );
 }
