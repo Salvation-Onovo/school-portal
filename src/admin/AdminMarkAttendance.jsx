@@ -129,7 +129,6 @@ function AdminMarkAttendance() {
 
   return (
     <div>
-      <div className="my-5 w-96" id={qrId}></div>
       <div className="flex">
         <AdminSideBar />
         <div className="w-full">
@@ -168,6 +167,7 @@ function AdminMarkAttendance() {
         </div>
       </div>
 
+      <div className="my-5 w-96" id={qrId}></div>
       <div className="ml-80 h-full flex justify-center items-center mt-10">
         <Card className="h-full w-full overflow-scroll">
           <h1 className="flex items-center justify-center my-6 text-2xl font-semibold">All Students</h1>
