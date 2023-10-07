@@ -132,6 +132,7 @@ function AdminMarkAttendance() {
       <div className="flex">
         <AdminSideBar />
         <div className="w-full">
+          <div className=" w-96" id={qrId}></div>
           <div className="flex flex-col lg:flex-row justify-center items-center gap-5 m-10 lg:ml-28">
             {/* <Button onClick={generateQrcode} size="lg" color="green">Generate Qrcode</Button> */}
             <div className="flex justify-center lg:mt-18">
@@ -167,7 +168,7 @@ function AdminMarkAttendance() {
         </div>
       </div>
 
-      <div className="ml-96 w-96" id={qrId}></div>
+
       <div className="ml-80 h-full flex justify-center items-center mt-10">
         <Card className="h-full w-full overflow-scroll">
           <h1 className="flex items-center justify-center my-6 text-2xl font-semibold">All Students</h1>
