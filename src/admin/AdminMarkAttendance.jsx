@@ -35,7 +35,8 @@ function AdminMarkAttendance() {
           method: "GET", // Specify the HTTP method as POST
           mode: "cors",
           headers: {
-            "Content-Type": "application/json", // Set the content type to JSON
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + tokenDetails.token // Set the content type to JSON
           },
           body: JSON.stringify({
             qrCodeData: data // Use meaningful variable names
