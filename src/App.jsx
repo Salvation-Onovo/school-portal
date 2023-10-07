@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Admin, AdminAttendance, AdminMarkAttendance, CheckResult, Drawer, Home, Login, MarkAttendance, ResetPassword, SignUp, VerifyPayment } from './components'
+import { Admin, AdminAttendance, AdminDrawer, AdminMarkAttendance, CheckResult, Drawer, Home, Login, MarkAttendance, ResetPassword, SignUp, VerifyPayment } from './components'
 
 function App() {
 
@@ -14,6 +14,7 @@ function App() {
         <Route path="CheckResult" element={<CheckResult />} />
         <Route path="VerifyPayment" element={<VerifyPayment />} />
         <Route path="Drawer" element={<Drawer />} />
+        <Route path="AdminDrawer" element={<AdminDrawer />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="AdminMarkAttendance" element={<AdminMarkAttendance />} />
         <Route path="AdminAttendance" element={<AdminAttendance />} />

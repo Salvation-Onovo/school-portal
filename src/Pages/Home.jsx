@@ -18,7 +18,6 @@ const CheckUser = async (userId) => {
 }
 function Home() {
 
-
   useEffect(() => {
     CheckUser(userDetails)
   }, []);

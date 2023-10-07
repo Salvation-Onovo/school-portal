@@ -1,6 +1,6 @@
 // import { useEffect } from "react"
 import { Html5QrcodeScanType, Html5QrcodeScanner } from "html5-qrcode";
-import { AdminSideBar, Table } from "../components"
+import { AdminDrawer, AdminSideBar, Table } from "../components"
 import { Button, Card, Typography } from "@material-tailwind/react"
 import QRCode from "qrcode.react";
 import { useEffect, useRef, useState } from "react";
@@ -138,6 +138,9 @@ function AdminMarkAttendance() {
 
   return (
     <div>
+      <span className='flex lg:hidden mt-4 ml-2 justify-center items-center rounded-full h-12 w-12 ring-blue-gray-800 shadow-lg'>
+        <AdminDrawer />
+      </span>
       <div className="flex">
         <AdminSideBar />
         <div className="w-full">
@@ -173,12 +176,12 @@ function AdminMarkAttendance() {
           </div>
           <ToastContainer />
 
-          <div className="ml-96 w-96" id={qrId}></div>
+          <div className="ml-5 lg:ml-96 w-96" id={qrId}></div>
         </div>
       </div>
 
 
-      <div className="ml-80 h-full flex justify-center items-center mt-10">
+      <div className="lg:ml-80 lg:h-full flex justify-center items-center mt-10">
         <Card className="h-full w-full overflow-scroll">
           <h1 className="flex items-center justify-center my-6 text-2xl font-semibold">All Students</h1>
           <table className="w-full min-w-max table-auto text-center">

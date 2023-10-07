@@ -8,16 +8,13 @@ import {
 } from "@material-tailwind/react";
 import {
   ShoppingBagIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  HomeIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
 
 import { HiMenuAlt1 } from 'react-icons/hi'
 
-function DrawerNav() {
+function AdminDrawer() {
   const [open, setOpen] = React.useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -49,36 +46,19 @@ function DrawerNav() {
         </div>
         <List>
           <ListItem>
-            <Link to={"/Home"}>
-              <div className="flex items-center justify-between gap-2">
-                <HomeIcon className="h-5 w-5" />
-                <p>Home</p>
-              </div>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to={"/MarkAttendance"}>
-              <div className="flex items-center justify-between gap-2">
+            <Link to={"/Admin"}>
+              <div className="text-black flex hover:text-gray-800 hover:bg-gray-400 p-2 rounded-lg">
                 <ShoppingBagIcon className="h-5 w-5" />
-                <p>Mark Attendance</p>
+                <p className="ml-3.5">Home</p>
               </div>
             </Link>
           </ListItem>
 
           <ListItem>
-            <Link to={"/CheckResult"}>
-              <div className="flex items-center justify-between gap-2">
-                <InboxIcon className="h-5 w-5" />
-                <p>Check Result</p>
-              </div>
-            </Link>
-          </ListItem>
-
-          <ListItem>
-            <Link to={"/VerifyPayment"}>
-              <div className="flex items-center justify-between gap-2">
-                <Cog6ToothIcon className="h-5 w-5" />
-                <p>Verify Payment</p>
+            <Link to={"/AdminMarkAttendance"}>
+              <div className="text-black flex hover:text-gray-800 hover:bg-gray-400 p-2 rounded-lg">
+                <ShoppingBagIcon className="h-5 w-5" />
+                <p className="ml-3.5">Mark Attendance</p>
               </div>
             </Link>
           </ListItem>
@@ -106,4 +86,4 @@ function DrawerNav() {
   );
 }
 
-export default DrawerNav
+export default AdminDrawer
