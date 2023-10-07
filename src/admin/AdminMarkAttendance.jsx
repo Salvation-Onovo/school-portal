@@ -46,6 +46,7 @@ function AdminMarkAttendance() {
         if (response.status === 200) {
           toast.success("Attendance updated");
           toast.dismiss(status.current)
+          scanner.clear();
         } else {
           toast.error("Error while updating");
         }
