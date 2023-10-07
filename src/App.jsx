@@ -14,7 +14,7 @@ function App() {
         <Route path="CheckResult" element={<CheckResult />} />
         <Route path="VerifyPayment" element={<VerifyPayment />} />
         <Route path="Drawer" element={<Drawer />} />
-        <Route path="Admin" element={<Admin />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="AdminMarkAttendance" element={<AdminMarkAttendance />} />
         <Route path="AdminAttendance" element={<AdminAttendance />} />
       </Routes>
