@@ -28,34 +28,33 @@ function AdminMarkAttendance() {
     const scanner = new Html5QrcodeScanner(qrId, config);
 
     scanner.render(async (data) => {
-      if (data == studentId) {
-        status.current = toast.info('Please wait...', { autoClose: false })
-        try {
-          const response = await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
-            method: "GET", // Specify the HTTP method as POST
-            mode: "cors",
-            headers: {
-              "Content-Type": "application/json", // Set the content type to JSON
-            },
-            body: JSON.stringify({
-              qrCodeData: data // Use meaningful variable names
-            })
-          });
 
-          if (response.status === 200) {
-            toast.success("Attendance updated");
-            toast.dismiss(status.current)
-          } else {
-            toast.error("Error while updating");
-          }
-        } catch (error) {
-          console.error(error);
-          toast.error("An error occurred");
+      status.current = toast.info('Please wait...', { autoClose: false })
+      try {
+        const response = await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
+          method: "GET", // Specify the HTTP method as POST
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json", // Set the content type to JSON
+          },
+          body: JSON.stringify({
+            qrCodeData: data // Use meaningful variable names
+          })
+        });
+
+        if (response.status === 200) {
+          toast.success("Attendance updated");
           toast.dismiss(status.current)
-        } finally {
-          scanner.clear();
-          toast.dismiss(status.current)
+        } else {
+          toast.error("Error while updating");
         }
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred");
+        toast.dismiss(status.current)
+      } finally {
+        scanner.clear();
+        toast.dismiss(status.current)
       }
     });
 
@@ -140,7 +139,6 @@ function AdminMarkAttendance() {
       <div className="flex">
         <AdminSideBar />
         <div className="w-full">
-          <div className=" w-96" id={qrId}></div>
           <div className="flex flex-col lg:flex-row justify-center items-center gap-5 m-10 lg:ml-28">
             {/* <Button onClick={generateQrcode} size="lg" color="green">Generate Qrcode</Button> */}
             <div className="flex justify-center lg:mt-18">
@@ -173,6 +171,7 @@ function AdminMarkAttendance() {
           </div>
           <ToastContainer />
 
+          <div className="ml-96 w-96" id={qrId}></div>
         </div>
       </div>
 
