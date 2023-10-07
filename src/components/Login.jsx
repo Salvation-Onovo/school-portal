@@ -8,18 +8,19 @@ import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Login() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [view, setView] = useState(false);
+  const status = useRef()
 
   const login = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    status.current = toast.info('Please wait...', { autoClose: false })
     try {
-
       const response = await fetch("https://result-checker-g7zf.onrender.com/api/users/login", {
         method: "POST",
         mode: "cors",
@@ -30,19 +31,41 @@ function Login() {
           username,
           password,
         })
-      })
+      });
+
       const data = await response.json();
-      if (response.status == 200) {
 
-        localStorage.setItem('userDetails', JSON.stringify(data))
-        toast.success("Success", { toastId: "custom-id" })
-        window.location.href = "/home"
-      } else {
-        toast.error(data.message)
+      if (data) {
+        localStorage.setItem('token', JSON.stringify(data))
+        const userData = await getUserRole(data.user._id)
+
+        if (userData.data.role == "admin") {
+          localStorage.setItem('userDetails', JSON.stringify(userData));
+          window.location.href = "/admin";
+        } else {
+          localStorage.setItem('userDetails', JSON.stringify(userData));
+          window.location.href = "/home";
+        }
+
       }
-    } catch (err) {
 
-      toast.error("Login Failed", { toastId: 'custom-id' })
+    } catch (err) {
+      toast.error("Login Failed", { toastId: 'custom-id' });
+    }
+  }
+
+  const getUserRole = async (userId) => {
+    try {
+      const response = await fetch(`https://result-checker-g7zf.onrender.com/api/users/${userId}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      return response.json()
+    } catch (error) {
+      console.log(error)
     }
   }
   return (

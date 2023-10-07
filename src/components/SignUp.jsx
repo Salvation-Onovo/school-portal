@@ -32,7 +32,7 @@ function Icon() {
 }
 
 // eslint-disable-next-line react/prop-types
-function AlertCustomCloseIcon({message}) {
+function AlertCustomCloseIcon({ message }) {
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -69,14 +69,14 @@ function SignUp() {
   const [confirmPwd, setConfirmPwd] = useState("")
   const [view, setView] = useState(false);
   const [fail, setFail] = useState({
-    state :false, error : '',
+    state: false, error: '',
   });
 
   const handlesubmit = async (e) => {
 
     e.preventDefault();
     if (6 > password.length) {
-      setFail({...fail, state : true , error : 'Password is less than 6'})      
+      setFail({ ...fail, state: true, error: 'Password is less than 6' })
     } else {
       if (password === confirmPwd) {
         try {
@@ -104,7 +104,7 @@ function SignUp() {
           console.log(err);
         }
       } else {
-        setFail({...fail, state : true , error : 'Passwords does not match'})  
+        setFail({ ...fail, state: true, error: 'Passwords does not match' })
       }
     }
 
@@ -125,7 +125,7 @@ function SignUp() {
             <Input size="lg" label="First Name" required onChange={(e) => setFirstname(e.target.value)} />
             <Input size="lg" label="Last Name" required onChange={(e) => setLatname(e.target.value)} />
             <Input size="lg" label="User Name" required onChange={(e) => setUsername(e.target.value)} />
-            {fail.state ? <AlertCustomCloseIcon message={fail.error}/> : ''}
+            {fail.state ? <AlertCustomCloseIcon message={fail.error} /> : ''}
             <Input type={view ? "text" : "password"} required size="lg" label="Password" icon={
               view ? (
                 <BsEye
@@ -139,7 +139,7 @@ function SignUp() {
                 />
               )
             } onChange={(e) => setPassword(e.target.value)} />
-            
+
             <Input type={view ? "text" : "password"} required size="lg" label="ConfirmPassword" onChange={(e) => setConfirmPwd(e.target.value)} icon={
               view ? (
                 <BsEye
