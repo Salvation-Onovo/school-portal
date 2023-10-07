@@ -14,6 +14,7 @@ function AdminMarkAttendance() {
   const [showQRCode, setShowQRCode] = useState(false);
   const [students, setStudents] = useState([]);
   const [qrCode, setQrCode] = useState();
+  const [studentId, setStudentId] = useState()
   const status = useRef()
 
   const scan = () => {
@@ -26,29 +27,35 @@ function AdminMarkAttendance() {
 
     const scanner = new Html5QrcodeScanner(qrId, config);
 
-    scanner.render(async (userId) => {
-      try {
-        const response = await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
-          method: "GET", // Specify the HTTP method as POST
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json", // Set the content type to JSON
-          },
-          body: JSON.stringify({
-            qrCodeData: userId // Use meaningful variable names
-          })
-        });
+    scanner.render(async (data) => {
+      if (data == studentId) {
+        status.current = toast.info('Please wait...', { autoClose: false })
+        try {
+          const response = await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
+            method: "GET", // Specify the HTTP method as POST
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json", // Set the content type to JSON
+            },
+            body: JSON.stringify({
+              qrCodeData: data // Use meaningful variable names
+            })
+          });
 
-        if (response.status === 200) {
-          toast.success("Attendance updated");
-        } else {
-          toast.error("Error while updating");
+          if (response.status === 200) {
+            toast.success("Attendance updated");
+            toast.dismiss(status.current)
+          } else {
+            toast.error("Error while updating");
+          }
+        } catch (error) {
+          console.error(error);
+          toast.error("An error occurred");
+          toast.dismiss(status.current)
+        } finally {
+          scanner.clear();
+          toast.dismiss(status.current)
         }
-      } catch (error) {
-        console.error(error);
-        toast.error("An error occurred");
-      } finally {
-        scanner.clear();
       }
     });
 
@@ -71,6 +78,7 @@ function AdminMarkAttendance() {
 
 
   const generateCode = async (userId) => {
+    setStudentId(userId)
     window.scrollTo(0, 0);
     status.current = toast.info('Please wait...', { autoClose: false })
     try {
