@@ -129,7 +129,7 @@ function AdminMarkAttendance() {
 
   return (
     <div>
-      <div id={qrId} className="w-96"></div>
+      <div className="my-5 w-96" id={qrId}></div>
       <div className="flex">
         <AdminSideBar />
         <div className="w-full">
