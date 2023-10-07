@@ -56,6 +56,22 @@ function DrawerNav() {
             </Link>
           </ListItem>
           <ListItem>
+
+          <Link to={"/CheckResult"}>
+          <div className="flex items-center justify-between gap-2">
+          <InboxIcon className="h-5 w-5" />
+            <p>Check Result</p>
+          </div>
+        </Link>
+          </ListItem>
+          <ListItem>
+          <Link to={"/VerifyPayment"}>
+          <div className="flex items-center justify-between gap-2">
+          <Cog6ToothIcon className="h-5 w-5" />
+            <p>Verify Payment</p>
+          </div>
+        </Link>
+
             <Link to={"/CheckResult"}>
               <div className="flex items-center justify-between gap-2">
                 <InboxIcon className="h-5 w-5" />
@@ -70,6 +86,7 @@ function DrawerNav() {
                 <p>Mark Attendance</p>
               </div>
             </Link>
+
           </ListItem>
           <ListItem>
             <ListItemPrefix>

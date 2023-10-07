@@ -42,6 +42,10 @@ function AlertCustomCloseIcon({ message }) {
         open={open}
         icon={<Icon />}
         color="red"
+        animate={{
+          mount: { y: 0 },
+          unmount: { y: 100 },
+        }}
         action={
           <Button
             variant="text"
