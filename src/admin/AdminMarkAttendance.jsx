@@ -176,7 +176,7 @@ function AdminMarkAttendance() {
           </div>
           <ToastContainer />
 
-          <div className="ml-5 lg:ml-96 w-96" id={qrId}></div>
+          <div className="ml-16 lg:ml-96 lg:w-96 w-64" id={qrId}></div>
         </div>
       </div>
 
@@ -184,7 +184,7 @@ function AdminMarkAttendance() {
       <div className="lg:ml-80 lg:h-full flex justify-center items-center mt-10">
         <Card className="h-full w-full overflow-scroll">
           <h1 className="flex items-center justify-center my-6 text-2xl font-semibold">All Students</h1>
-          <table className="w-full min-w-max table-auto text-center">
+          <table className="lg:w-full table-auto text-center m-6">
             <thead>
               <tr>
                 {/* <th className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
