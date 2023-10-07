@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
@@ -16,6 +17,7 @@ function Login() {
   const [password, setPassword] = useState("")
   const [view, setView] = useState(false);
   const status = useRef()
+  const navigate = useNavigate()
 
   const login = async (e) => {
     e.preventDefault();
@@ -41,10 +43,12 @@ function Login() {
 
         if (userData.data.role == "admin") {
           localStorage.setItem('userDetails', JSON.stringify(userData));
-          window.location.href = "/admin";
+          // window.location.href = "/admin";
+          navigate('/admin')
         } else {
           localStorage.setItem('userDetails', JSON.stringify(userData));
-          window.location.href = "/home";
+          // window.location.href = "/home";
+          navigate('/home')
         }
 
       }
