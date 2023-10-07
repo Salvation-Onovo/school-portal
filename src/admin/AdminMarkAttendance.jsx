@@ -32,7 +32,7 @@ function AdminMarkAttendance() {
       status.current = toast.info('Please wait...', { autoClose: false })
       try {
         const response = await fetch("https://result-checker-g7zf.onrender.com/api/attendance/signIn", {
-          method: "GET", // Specify the HTTP method as POST
+          method: "POST", // Specify the HTTP method as POST
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
